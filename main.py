@@ -3,10 +3,9 @@
     Created On  : 03/03/22
 """
 import logging
-
-import flask
 import os
 
+import flask
 import jwt
 from flask import request
 
@@ -51,7 +50,7 @@ def callback():
                 'client_id': CLIENT_ID,
                 'code': code,
                 'redirect_uri': f"http://{request.host}{request.path}",
-                'resource': config.AZURE_RESOURCE_URI,
+                'resource': 'https://management.core.windows.net/',
                 'client_secret': CLIENT_SECRET}
         token_response = requests.post(TOKEN_URL, data=data)
         if token_response.status_code == 200:
